@@ -6,6 +6,9 @@
 <img src="{{ post.photo.url }}", height = 40%, width = 40% />
 <hr/>
 {{ post.content }}
+
+<div class="fb-comments" data-href="{{request.build_absolute_url}}" data-numposts="5"></div>
+
 <hr/>
 <a href="{% url "blog.views.post_list" %}"> 글 목록으로 </a>
 
