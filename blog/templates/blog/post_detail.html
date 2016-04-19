@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<h1> {{ post.title }} </h1>
+<img src="{{ post.photo.url }}", height = 40%, width = 40% />
+<hr/>
+{{ post.content }}
+<hr/>
+<a href="{% url "blog.views.post_list" %}"> 글 목록으로 </a>
+
+{% endblock %}
