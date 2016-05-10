@@ -12,4 +12,16 @@ class PostForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ['post', 'author', 'message']
+        fields = ['author', 'message']
+
+class CommentForm2(forms.Form):
+    author = forms.CharField()
+    message = forms.CharField(widget=forms.Textarea)
+
+    def save(self, commit=True):
+        comment = Comment(**self.cleaned_data)
+        if commit:
+            comment.save()
+        return comment
+
+# CommentForm과 CommentFomr2는 완전히 같은 기능을 하는 코드이다.

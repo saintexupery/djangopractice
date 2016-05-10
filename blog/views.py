@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Post
-from .forms import CommentForm
+from .forms import CommentForm2
 
 def post_list(request):
     post_list = Post.objects.all()
@@ -22,12 +22,14 @@ def comment_new(request, post_pk):
         raise Http404
 
     if request.method == 'POST':
-        form = CommentForm(request.POST)
+        form = CommentForm2(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save
             return redirect(post)
     else:
-        form = CommentForm()
+        form = CommentForm2()
     return render(request, 'blog/comment_form.html', {
         'form': form
     })
