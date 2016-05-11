@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$' , hello),
     url('', include('blog.urls', namespace='blog')),
+    url(r'^new/$', 'blog.views.post_new'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

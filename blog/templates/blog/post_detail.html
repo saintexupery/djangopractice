@@ -7,7 +7,13 @@
 <hr/>
 {{ post.content }}
 <hr/>
-
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
 <div class="fb-comments" data-href="{{request.build_absolute_url}}" data-numposts="5"></div>
 <a href="{% url "blog:post_list" %}"> 글 목록으로 </a>
 
